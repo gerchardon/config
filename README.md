@@ -13,3 +13,10 @@ ln -sf $(pwd)/.alias.d/ ~/
 ln -sf $(pwd)/terminator ~/.config/
 ```
 
+## Git
+
+```bash
+ln -sf $(pwd)/git/.gitalias ~/
+git config --global --replace-all include.path "~/.gitalias" "~/.gitalias"
+```
+

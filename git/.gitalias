@@ -1,0 +1,43 @@
+[alias]
+  co = checkout
+  ci = commit
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  amend = commit --amend
+  s = status
+  who = shortlog -sne
+  oneline = log --pretty=oneline --abbrev-commit --graph
+  changes = diff --name-status
+  dic = diff --cached
+  diffstat = diff --stat
+  svnpull = svn rebase
+  svnpush = svn dcommit
+#  lc = !git oneline ORIG_HEAD.. --stat --no-merges
+  addm = !git-ls-files -m -z | xargs -0 git-add && git status
+  addu = !git-ls-files -o --exclude-standard -z | xargs -0 git-add && git status
+  rmm = !git ls-files -d -z | xargs -0 git-rm && git status
+  mate = !git-ls-files -m -z | xargs -0 mate
+  mateall = !git-ls-files -m -o --exclude-standard -z | xargs -0 mate
+  type = cat-file -t
+  dump = cat-file -p
+  funcdiff = !sh -c "git show \"$1:$3\" | sed -n \"/^[^ \t].*$4(/,/^}/p\" > .tmp1 && git show \"$2:$3\" | sed -n \"/^[^ \t].*$4(/,/^}/p\" > .tmp2 && git diff --no-index .tmp1 .tmp2"
+
+  alias = !git config -l | grep alias\\. | cut -c 7-
+  ramend = commit --amend --no-edit
+  b = "!f(){ git branch ${@:--avv}; }; f"
+  cm = "!f(){ git commit -m \"$*\"; }; f"
+  d = diff
+  ds = diff --staged
+  dw = diff --color-words
+  l = "!f(){ git ll ${@:--10}; }; f"
+  la = "!f(){ git ll --all ${@:--10}; }; f"
+  ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+  lll = !git ll --stat
+  lc = !git lll --no-merges ORIG_HEAD..
+  lm = !git lll --no-merges
+  number = !git-number
+  proxy = "!f(){ $@; }; f"
+  unadd = reset HEAD
+  rr = "!f(){ cd $1; shift; git \"$@\"; }; f"
+  ds = diff --stat
+  diffstat = diff --stat
