@@ -3,7 +3,7 @@
   window_state = maximise
   suppress_multiple_term_dialog = True
 [keybindings]
-  reset_clear = <Primary>k
+  reset_clear = <Alt>k
 [profiles]
   [[default]]
     use_system_font = False
