@@ -5,6 +5,7 @@
 ```bash
 ln -sf $(pwd)/.bash_aliases ~/
 ln -sf $(pwd)/.alias.d/ ~/
+ln -sf $(pwd)/bin ~/
 ```
 
 ## Apps Config
