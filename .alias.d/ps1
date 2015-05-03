@@ -1,0 +1,12 @@
+# PS1 = \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+export PS1='\[\e]0;${PTITLE-\w}\a\]${debian_chroot:+($debian_chroot)}${PROMPT-\w}\$ '
+#export PS1="\[\e]0;\w\a\]${debian_chroot:+($debian_chroot)}\w\$ "
+export PROMPT_DIRTRIM=2
+
+function prompt() {
+  export PROMPT=$1
+}
+
+function ptitle() {
+  export PTITLE=$1
+}

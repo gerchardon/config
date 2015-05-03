@@ -1,0 +1,1 @@
+[[ -s "/home/ubuntu/.gvm/bin/gvm-init.sh" ]] && source "/home/ubuntu/.gvm/bin/gvm-init.sh"

@@ -1,0 +1,13 @@
+g() {
+  if command -v git-number &>/dev/null; then
+    \git-number "$@"
+  elif [ $# -eq 0 ]; then
+    \git status -sb
+  else
+    \git "$@"
+  fi
+}
+alias git=g
+
+[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git
+complete -o bashdefault -o default -o nospace -F _git g
