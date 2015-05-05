@@ -4,6 +4,8 @@
 
 ```
 curl https://gist.githubusercontent.com/gerchardon/3fe8139ab11b0f2bfe2f/raw | sh
+# or
+wget -qO- https://gist.githubusercontent.com/gerchardon/3fe8139ab11b0f2bfe2f/raw | sh
 ```
 
 ## Bash Aliases
