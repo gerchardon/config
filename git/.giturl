@@ -1,0 +1,4 @@
+[url "git@github.com:gerchardon/"]
+    insteadOf = me:
+[url "git@github.com:openstack/"]
+    insteadOf = os:
