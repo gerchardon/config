@@ -41,3 +41,6 @@
   rr = "!f(){ cd $1; shift; git \"$@\"; }; f"
   ds = diff --stat
   diffstat = diff --stat
+
+[include]
+  path = .giturl
