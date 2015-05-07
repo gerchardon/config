@@ -26,6 +26,7 @@ ln -sf $(pwd)/terminator ~/.config/
 
 ```bash
 ln -sf $(pwd)/git/.gitalias ~/
+ln -sf $(pwd)/git/.giturl ~/
 git config --global --replace-all include.path "~/.gitalias" "~/.gitalias"
 ```
 
