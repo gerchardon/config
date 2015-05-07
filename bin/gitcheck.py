@@ -1,1 +1,1 @@
-../gitcheck/gitcheck.py
+../gitcheck/gitcheck/gitcheck.py
