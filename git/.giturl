@@ -1,3 +1,5 @@
+[url "git@github.com:"]
+    insteadOf = github:
 [url "git@github.com:gerchardon/"]
     insteadOf = me:
 [url "git@gist.github.com:"]
