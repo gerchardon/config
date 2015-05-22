@@ -1,6 +1,6 @@
 # config
 
-## One line install
+## One line install
 
 ```
 curl -L http://git.io/vJN8r | sh
@@ -8,7 +8,7 @@ curl -L http://git.io/vJN8r | sh
 wget -qO- http://git.io/vJN8r | sh
 ```
 
-## Bash Aliases
+## Bash Aliases
 
 ```bash
 ln -sf $(pwd)/.bash_aliases ~/
@@ -22,11 +22,10 @@ ln -sf $(pwd)/bin ~/
 ln -sf $(pwd)/terminator ~/.config/
 ```
 
-## Git
+## Git
 
 ```bash
 ln -sf $(pwd)/git/.gitalias ~/
 ln -sf $(pwd)/git/.giturl ~/
 git config --global --replace-all include.path "~/.gitalias" "~/.gitalias"
 ```
-
