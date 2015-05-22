@@ -10,3 +10,5 @@ function prompt() {
 function ptitle() {
   export PTITLE=$1
 }
+
+export EDITOR=vim
