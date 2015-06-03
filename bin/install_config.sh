@@ -39,6 +39,7 @@ else
   # Get last tag
   git -C "$HOME/.nvm" fetch --all >/dev/null 2>&1
   git -C "$HOME/.nvm" checkout master >/dev/null 2>&1
+  git -C "$HOME/.nvm" pull >/dev/null 2>&1
   git -C "$HOME/.nvm" checkout $(git -C "$HOME/.nvm" describe --abbrev=0 --tags) >/dev/null 2>&1
 fi
 . $HOME/.nvm/nvm.sh
