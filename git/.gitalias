@@ -16,6 +16,7 @@
   addm = !git-ls-files -m -z | xargs -0 git-add && git status
   addu = !git-ls-files -o --exclude-standard -z | xargs -0 git-add && git status
   rmm = !git ls-files -d -z | xargs -0 git-rm && git status
+  i = !git ls-files -i --exclude-standard -o
   mate = !git-ls-files -m -z | xargs -0 mate
   mateall = !git-ls-files -m -o --exclude-standard -z | xargs -0 mate
   type = cat-file -t
