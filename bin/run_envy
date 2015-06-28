@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+import os
+
+ENVY_REPO = "https://github.com/progrium/envy.git"
+ENVY_DIR = os.path.join(os.path.expanduser('~'), "publics", "envy")
+
+
+class RunEnvy(object):
+
+    def __init__(self):
+        self.args = self._get_parser().parse_args(sys.argv[1:])
+
+    def _get_parser(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("-g", "--git", action="store_true")
+        parser.add_argument("-u", "--update", action="store_true")
+        return parser
+
+    def main(self):
+        if self.args.git:
+            if os.path.isdir(ENVY_DIR):
+                if self.args.update:
+                    os.system("git -C %s pull" % ENVY_DIR)
+            else:
+                os.system("git clone %s %s", (ENVY_REPO, ENVY_DIR))
+            os.system("docker build -f %s/Dockerfile -t progrium/envy:dev %s" %
+                      (ENVY_DIR, ENVY_DIR))
+            os.system("docker run --rm -ti --name envy.dev -v /tmp/data:/data "
+                      "-v /var/run/docker.sock:/var/run/docker.sock "
+                      "-p 8000:80 -p 2222:22 -e HOST_DATA=/tmp/data "
+                      "progrium/envy:dev")
+            os.system("docker rm -f $(docker ps -q -f image=jpetazzo/dind) "
+                      "2>/dev/null")
+        else:
+            os.system("docker pull progrium/envy")
+            os.system("docker rm -f envy.dev 2>/dev/null")
+            os.system("docker run --rm -ti --name envy.dev -v /tmp/data:/data -v /var/run/docker.sock:/var/run/docker.sock -p 8000:80 -p 2222:22 -e HOST_DATA=/tmp/data progrium/envy")
+            os.system("docker rm -f $(docker ps -q -f image=jpetazzo/dind) 2>/dev/null")
+
+if __name__ == '__main__':
+    RunEnvy().main()
