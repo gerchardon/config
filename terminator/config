@@ -10,7 +10,7 @@
     scrollback_lines = 3000
     background_type = transparent
     background_image = None
-    font = Monospace 8
+    font = Monospace 6
     scrollback_infinite = True
 [layouts]
   [[default]]
