@@ -2,7 +2,7 @@
 
 WHERE=${WHERE-$HOME/projects/config}
 
-packages="git curl terminator vim xclip"
+packages="git curl terminator vim xclip wget"
 dpkg -s $packages >/dev/null 2>&1 && {
   echo "Packages already install"
 } || {
