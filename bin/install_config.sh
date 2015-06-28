@@ -46,3 +46,7 @@ fi
 echo "Update iojs"
 nvm install iojs
 nvm alias default iojs
+
+# Python
+## virtualenvwrapper
+[ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --install-option="--user" virtualenvwrapper
