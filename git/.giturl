@@ -6,3 +6,5 @@
     insteadOf = gist:
 [url "git@github.com:openstack/"]
     insteadOf = os:
+[include]
+  path = .gitprivate
