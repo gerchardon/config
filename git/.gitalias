@@ -4,7 +4,7 @@
   br = branch
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   amend = commit --amend
-  s = status
+  s = status -sb
   who = shortlog -sne
   oneline = log --pretty=oneline --abbrev-commit --graph
   changes = diff --name-status
