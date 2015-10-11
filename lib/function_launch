@@ -1,0 +1,11 @@
+# -*-Shell-script-*-
+
+function launch() {
+    debug "Start launch"
+    dir=$1
+    for i in $dir/*; do
+        source $i
+        run
+        unset -f run
+    done
+}
