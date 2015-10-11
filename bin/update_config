@@ -14,5 +14,8 @@ for lib in $(dirname $(realpath $0))/../lib/*; do
   source $lib
 done
 
+debug "Update repository"
+git_clone_pull "https://github.com/gerchardon/config.git" "$WHERE"
+
 debug "Launch update.d"
 launch "$WHERE/update.d/"

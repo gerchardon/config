@@ -1,0 +1,13 @@
+# -*-Shell-script-*-
+
+function git_clone_pull() {
+  repo=$1
+  dir=$2
+  [ ! -d "$repo" ] && {
+    mkdir -p "$repo/.."
+    git clone --recursive $repo $dir
+  } || {
+    git -C $dir pull
+  }
+  debug "Clone $repo to $dir"
+}
