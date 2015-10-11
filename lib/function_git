@@ -3,11 +3,11 @@
 function git_clone_pull() {
   repo=$1
   dir=$2
-  [ ! -d "$repo" ] && {
+  [ ! -d "$dir" ] && {
     mkdir -p "$repo/.."
-    git clone --recursive $repo $dir
+    git clone --recursive "$repo" "$dir"
   } || {
-    git -C $dir pull
+    git -C "$dir" pull
   }
   debug "Clone $repo to $dir"
 }
