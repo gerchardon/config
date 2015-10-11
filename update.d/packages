@@ -1,0 +1,7 @@
+# -*-Shell-script-*-
+
+function run() {
+  debug "Update packages"
+  sudo aptitude update >/dev/null \
+      && sudo aptitude upgrade -y >/dev/null
+}

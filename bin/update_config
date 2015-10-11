@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -eu
+
+##
+## Shell script to update configuration
+##  * launch all update.d/*
+##
+
+WHERE=${WHERE-$HOME/projects/config}
+
+# Load all library
+for lib in $(dirname $(realpath $0))/../lib/*; do
+  source $lib
+done
+
+debug "Launch update.d"
+launch "$WHERE/update.d/"

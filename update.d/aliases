@@ -1,0 +1,12 @@
+# -*-Shell-script-*-
+
+function run() {
+    debug "Verify alias, bin, config(app), git, ..."
+    ln -sf $WHERE/.bash_aliases $HOME/
+    ln -sf $WHERE/.alias.d/ $HOME/
+    ln -sf $WHERE/bin $HOME/
+    ln -sf $WHERE/terminator $HOME/.config/
+    ln -sf $WHERE/git/.gitalias $HOME/
+    ln -sf $WHERE/git/.giturl $HOME/
+    git config --global --replace-all include.path "~/.gitalias" "~/.gitalias"
+}
