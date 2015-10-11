@@ -1,0 +1,10 @@
+# -*-Shell-script-*-
+
+function run() {
+  git_clone_pull "https://github.com/gerchardon/emacs-config.git" "$HOME/.emacs.d"
+  git_clone_pull "https://github.com/cask/cask.git" "$HOME/.cask"
+  debug "Upgrade cask"
+  $HOME/.cask/bin/cask upgrade-cask
+  debug "Update emacs.d deps"
+  $(cd "$HOME/.emacs.d/" ; $HOME/.cask/bin/cask update)
+}
