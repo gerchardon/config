@@ -6,5 +6,7 @@ function run() {
   debug "Upgrade cask"
   $HOME/.cask/bin/cask upgrade-cask
   debug "Update emacs.d deps"
-  $(cd "$HOME/.emacs.d/" ; $HOME/.cask/bin/cask update)
+  set +eu
+  (cd "$HOME/.emacs.d/" ; $HOME/.cask/bin/cask update)
+  set -eu
 }
