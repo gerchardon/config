@@ -1,5 +1,10 @@
 # -*-Shell-script-*-
 
+function nvm_install() {
+    nvm install "$1" >/dev/null
+    nvm uninstall $(nvm ls "$1" | head -n -1 | strings | awk '{ print $2 }') 2>/dev/null
+}
+
 function run() {
     debug "Update nodejs (nvm)"
     if [ ! -d "$HOME/.nvm" ]; then
@@ -13,7 +18,11 @@ function run() {
     fi
     set +eu
     source $HOME/.nvm/nvm.sh
-    nvm install iojs >/dev/null
-    nvm alias default iojs >/dev/null
+    nvm_install v4
+    nvm_install iojs
+    nvm_install v0.10
+    nvm_install v0.11
+    nvm_install v0.12
+    nvm alias default v4 >/dev/null
     set -eu
 }
