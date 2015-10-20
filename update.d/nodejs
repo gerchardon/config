@@ -2,7 +2,9 @@
 
 function nvm_install() {
     nvm install "$1" >/dev/null
-    nvm uninstall $(nvm ls "$1" | head -n -1 | strings | awk '{ print $2 }') 2>/dev/null
+    for version in $(nvm ls "$1" 2>/dev/null | head -n -1 | strings | awk '{ print $2 }'); do
+        nvm uninstall $version
+    done
 }
 
 function run() {
