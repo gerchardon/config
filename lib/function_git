@@ -1,6 +1,7 @@
 # -*-Shell-script-*-
 
 function git_clone_pull() {
+  debug "Clone $repo to $dir"
   repo=$1
   dir=$2
   [ ! -d "$dir" ] && {
@@ -9,5 +10,4 @@ function git_clone_pull() {
   } || {
     git -C "$dir" pull
   }
-  debug "Clone $repo to $dir"
 }
