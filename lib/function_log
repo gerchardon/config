@@ -1,5 +1,9 @@
 # -*-Shell-script-*-
 
 function debug() {
-    echo "[DEBUG] $@"
+  echo "[DEBUG] $@"
+}
+
+function info() {
+  echo "[INFO] $@"
 }
