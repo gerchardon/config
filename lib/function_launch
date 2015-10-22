@@ -4,9 +4,12 @@ function launch() {
   debug "Start launch"
   dir=$1
   for i in $dir/*; do
-    info "Run $i"
-    source $i
-    run
-    unset -f run
+    name=$(basename $i)
+    if [[ ($update =~ $name) || ($update == "all")]]; then
+      info "Run $i"
+      source $i
+      run
+      unset -f run
+    fi
   done
 }

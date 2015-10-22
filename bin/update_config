@@ -7,12 +7,19 @@ set -eu
 ##  * launch all update.d/*
 ##
 
+# Handle Option
+# -u all       all update.d
+# -u <update>  enable update.d
+# -g           git update
+
 WHERE=${WHERE-$HOME/projects/config}
 
 # Load all library
 for lib in $(dirname $(realpath $0))/../lib/*; do
   source $lib
 done
+
+handle_option $@
 
 info "Update repository"
 git_clone_pull "https://github.com/gerchardon/config.git" "$WHERE"
