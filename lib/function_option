@@ -1,0 +1,39 @@
+# -*-Shell-script-*-
+
+function disable_all() {
+  [[ -n $disabled ]] && return
+  disabled="true"
+  update=""
+  git_update=""
+  echo "Disable all"
+}
+
+function default_env() {
+  disabled=""
+  update="all"
+  git_update="true"
+}
+
+
+function handle_option() {
+  default_env
+  while getopts "dgu:" opt; do
+    case $opt in
+    d)
+      disable_all
+      ;;
+    u)
+      disable_all
+      update+="$OPTARG "
+      ;;
+    g)
+      disable_all
+      git_update=1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    esac
+  done
+}
