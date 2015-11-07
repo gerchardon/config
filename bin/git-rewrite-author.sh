@@ -24,4 +24,4 @@ fi
 EOF
 )
 
-git filter-branch --env-filter "$RENAME_AUTHOR" --tag-name-filter cat -- --branches --tags
+git filter-branch -f --env-filter "$RENAME_AUTHOR" --tag-name-filter cat -- --branches --tags
