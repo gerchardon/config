@@ -3,4 +3,5 @@
 function run() {
   debug "Python"
   [ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --user --install-option="--user" virtualenvwrapper
+  [ ! -f ~/.local/bin/http ] && pip install --user --install-option="--user" httpie
 }
