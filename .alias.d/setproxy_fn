@@ -12,7 +12,7 @@ function proxy-set(){
   then
     DEF="localhost:3128"
   fi
-  _proxy_host=${$DEF}
+  _proxy_host=${DEF}
 
   usage(){
     cat <<EOF
