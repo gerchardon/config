@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Clean all previous function (enable reload lib)
+unset -f proxy-set proxy-clear proxy-flip proxy-use _proxy-env _proxy-unenv
+
+function proxy-set(){
+  proxy-clear
+  _proxy_no=${DEFAULT_NO_PROXY-localhost,.local,127.0.0.0/8,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8}
+  DEF="proxy:80"
+  # If localhost 3128 is open (tunnel proxy is active so use it)
+  if nc -zv -w30 127.0.0.1 3128 <<< '' &>/dev/null
+  then
+    DEF="localhost:3128"
+  fi
+  _proxy_host=${$DEF}
+
+  usage(){
+    cat <<EOF
+Usage :
+  proxy-set [-p proxy] [-h]
+  proxy-clear
+EOF
+  }
+
+  local OPTIND OPTERR
+  while getopts "hp:" Option
+  do
+    case $Option in
+      h  ) usage; return 0;;
+      p  ) PROXY=$OPTARG;;
+      *  ) usage; return 1;;
+    esac
+  done
+  shift $(($OPTIND - 1)) # Clean Attributs
+  unset -f OPTIND OPTERR
+
+  # Read user or get current user
+  if [[ -z ${PROXY_USER_NO_ASK+no} ]]; then
+    read -p "Enter proxy user (default $USER) : " _proxy_user
+    [ -z $_proxy_user ] && _proxy_user=$USER
+  else
+    _proxy_user=$USER
+  fi
+  # Read password
+  read -p "Enter proxy pwd : " -s _proxy_pass
+  echo ""
+
+  if [[ -n ${PROXY_FW_IP+yes} ]]; then
+    # Firewall auth
+    echo -n "Authenticating to firewall $PROXY_FW_IP for 10 hours... "
+    if curl -k --silent -d "url=" -d "uid=$_proxy_user" -d "time=600" -d "pswd=$_proxy_pass" -d "logout=" -d "authnum=1" https://$PROXY_FW_IP/auth/plain.html | grep -q -m 1 -i "Authentication successful"; then
+      echo "SUCCESS."
+    else
+      echo "FAILED! Wrong username/password? Connection error?"
+      echo "Run the following command to troubleshoot:"
+      echo 'curl -v -k -d "url=" -d "uid=${YOUR_PROXY_USERNAME}" -d "time=600" -d "pswd=${YOUR_PROXY_PASSWORD}" -d "logout=" -d "authnum=1" https://'$PROXY_FW_IP'/auth/plain.html'
+      return 1
+    fi
+  fi
+
+  # Export proxy env
+  export _proxy_no
+  export _proxy_user
+  export _proxy_pass
+  export _proxy_host
+  export _proxy_port
+  _proxy-env
+}
+
+function proxy-clear(){
+  _proxy-unenv
+  unset _proxy _proxy_no _proxy_user _proxy_pass _proxy_host
+}
+
+function proxy-flip(){
+  if [[ $_proxy == "on" ]]; then
+    _proxy-unenv
+    echo Proxy disabled
+  elif [[ $_proxy == "off" ]]; then
+    _proxy-env
+    echo Proxy enabled
+  else
+    proxy-set
+  fi;
+}
+
+function proxy-use(){
+  if [[ $_proxy != "on" ]]; then
+    proxy-flip >/dev/null
+  fi
+  $@
+  proxy-flip >/dev/null
+}
+
+function _proxy-env(){
+  if [[ -n "${EXTRA_NO_PROXY}" ]]; then
+    export no_proxy=${EXTRA_NO_PROXY},$_proxy_no
+  else
+    export no_proxy=$_proxy_no
+  fi
+  export NO_PROXY=$no_proxy
+  export http_proxy=http://$_proxy_user:$_proxy_pass@$_proxy_host
+  export HTTP_PROXY=$http_proxy
+  export https_proxy=http://$_proxy_user:$_proxy_pass@$_proxy_host
+  export HTTPS_PROXY=$https_proxy
+  export ftp_proxy=http://$_proxy_user:$_proxy_pass@$_proxy_host
+  export FTP_PROXY=$ftp_proxy
+
+  # TODO: Use env variable
+  # use for scala (sbt), ant, ivy
+  export SBT_OPTS=\
+"-Dhttp.proxyHost=proxy -Dhttp.proxyPort=80  -Dhttp.proxyUser=$_proxy_user  -Dhttp.proxyPassword=$_proxy_pass "\
+"-Dhttps.proxyHost=proxy -Dhttps.proxyPort=80 -Dhttps.proxyUser=$_proxy_user -Dhttps.proxyPassword=$_proxy_pass"
+  export ANT_OPTS="$SBT_OPTS"
+  export JAVA_OPTS="$SBT_OPTS"
+
+  export _proxy=on
+
+  # Configure PS1 change with CHROOT
+  if [[ -n ${PROXY_PS1+yes} ]]; then
+    export debian_chroot=proxy
+  fi
+}
+
+function _proxy-unenv(){
+  unset debian_chroot
+  unset no_proxy http_proxy https_proxy ftp_proxy
+  unset NO_PROXY HTTP_PROXY HTTPS_PROXY FTP_PROXY
+  unset SBT_OPTS ANT_OPTS JAVA_OPTS
+  export _proxy=off
+}
