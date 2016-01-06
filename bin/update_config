@@ -15,7 +15,7 @@ set -eu
 WHERE=${WHERE-$HOME/projects/config}
 
 # Load all library
-for lib in $(dirname $(realpath $0))/../lib/*; do
+for lib in $WHERE/lib/*; do
   source $lib
 done
 

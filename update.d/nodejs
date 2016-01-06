@@ -10,7 +10,7 @@ function nvm_install() {
 function run() {
     debug "Update nodejs (nvm)"
     if [ ! -d "$HOME/.nvm" ]; then
-        git clone github:creationix/nvm $HOME/.nvm
+        git clone https://github.com/creationix/nvm.git $HOME/.nvm
     else
         # Get last tag
         git -C "$HOME/.nvm" fetch --all >/dev/null 2>&1
