@@ -6,7 +6,7 @@ function git_clone_pull() {
   dir=$2
   debug "Clone $repo to $dir"
   [ ! -d "$dir" ] && {
-    mkdir -p "$repo/.."
+    mkdir -p "$dir/.."
     git clone --recursive "$repo" "$dir"
   } || {
     git -C "$dir" pull

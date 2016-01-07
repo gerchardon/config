@@ -24,8 +24,8 @@ function check_or_install_packages() {
 function git_clone() {
     repo=$1
     dir=$2
-    [ ! -d "$repo"] && {
-        mkdir -p "$repo/.."
+    [ ! -d "$dir"] && {
+        mkdir -p "$dir/.."
         git clone --recursive $repo $dir
     } || {
         git -C $dir pull
