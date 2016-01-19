@@ -42,7 +42,7 @@
   rr = "!f(){ cd $1; shift; git \"$@\"; }; f"
   ds = diff --stat
   diffstat = diff --stat
-  f = fetch --all
+  f = "!f(){ git fetch --all; git remote prune origin; }; f"
 
 [include]
   path = .giturl
