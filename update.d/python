@@ -2,7 +2,10 @@
 
 function run() {
   debug "Python"
-  command -v pip >/dev/null 2>&1 || debug "Pip not found (Python [disabled])" && return 0
+  command -v pip >/dev/null 2>&1 || {
+    debug "Pip not found (Python [disabled])"
+    return 0
+  }
   [ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --user --install-option="--user" virtualenvwrapper
   [ ! -f ~/.local/bin/http ] && pip install --user --install-option="--user" httpie
 }

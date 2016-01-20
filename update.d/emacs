@@ -1,7 +1,10 @@
 # -*-Shell-script-*-
 
 function run() {
-  command -v emacs >/dev/null 2>&1 || debug "Emacs not found (Emacs [disabled])" && return 0
+  command -v emacs >/dev/null 2>&1 || {
+    debug "Emacs not found (Emacs [disabled])"
+    return 0
+  }
   git_clone_pull "https://github.com/gerchardon/emacs-config.git" "$HOME/.emacs.d"
   git_clone_pull "https://github.com/cask/cask.git" "$HOME/.cask"
   debug "Upgrade cask"
