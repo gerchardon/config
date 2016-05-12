@@ -1,0 +1,5 @@
+alias d="docker"
+
+
+[ -f /usr/share/bash-completion/completions/docker ] && source /usr/share/bash-completion/completions/docker
+complete -o bashdefault -o default -o nospace -F _docker d
