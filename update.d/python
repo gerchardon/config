@@ -8,4 +8,5 @@ function run() {
   }
   [ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --user --install-option="--user" virtualenvwrapper
   [ ! -f ~/.local/bin/http ] && pip install --user --install-option="--user" httpie
+  [ ! -f ~/.local/bin/gitcheck ] && pip install --user --install-option="--user" git+git://github.com/badele/gitcheck.git && pip install --user --install-option="--user" colored
 }
