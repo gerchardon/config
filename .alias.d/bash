@@ -1,14 +1,11 @@
-# PS1 = \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$
-export PS1='\[\e]0;${PTITLE-\w}\a\]${debian_chroot:+($debian_chroot)}${PROMPT-\w}\$ '
-#export PS1="\[\e]0;\w\a\]${debian_chroot:+($debian_chroot)}\w\$ "
-export PROMPT_DIRTRIM=2
+# CDPATH
+export CDPATH="~/projects/:~/gocode/src/github.com/gerchardon/"
+export PS1="\w\$ "
 
-function prompt() {
-  export PROMPT=$1
-}
 
 function ptitle() {
   export PTITLE=$1
 }
 
+# Editor
 export EDITOR=vim
