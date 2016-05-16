@@ -3,9 +3,9 @@ export CDPATH="~/projects/:~/gocode/src/github.com/gerchardon/"
 export PS1="\w\$ "
 
 
-function ptitle() {
-  export PTITLE=$1
-}
+# Git PS1
+GIT_PROMPT_ONLY_IN_REPO=1
+[ -r $CONFIG_PATH/bash-git-prompt/gitprompt.sh ] && source $CONFIG_PATH/bash-git-prompt/gitprompt.sh
 
 # Editor
 export EDITOR=vim
