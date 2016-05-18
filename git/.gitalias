@@ -44,5 +44,9 @@
   diffstat = diff --stat
   f = "!f(){ git fetch --all; git remote prune origin; }; f"
 
+  fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+  contributors = shortlog --summary --numbered
+
 [include]
   path = .giturl
