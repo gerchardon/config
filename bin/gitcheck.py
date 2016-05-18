@@ -1,1 +1,0 @@
-../gitcheck/gitcheck/gitcheck.py
