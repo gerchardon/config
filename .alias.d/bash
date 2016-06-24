@@ -1,5 +1,5 @@
 # CDPATH
-export CDPATH="~/projects/:~/gocode/src/github.com/gerchardon/"
+export CDPATH=".:~/projects/:~/gocode/src/github.com/gerchardon/"
 export PS1="\w\$ "
 export PROMPT_DIRTRIM=2
 
