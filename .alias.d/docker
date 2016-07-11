@@ -4,5 +4,9 @@ alias d="docker"
 [ -f /usr/share/bash-completion/completions/docker ] && source /usr/share/bash-completion/completions/docker
 complete -o bashdefault -o default -o nospace -F _docker d
 
+# Docker cleanup
+alias docker-clean='docker rm -f $(docker ps -aq)'
+alias docker-iclean='docker rmi $(docker images -q -f dangling=true)'
+
 # Docker client
 alias redis-cli="docker run --rm -ti redis:alpine redis-cli"
