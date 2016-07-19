@@ -39,7 +39,6 @@
   number = !git-number
   proxy = "!f(){ $@; }; f"
   unadd = reset HEAD
-  rr = "!f(){ cd $1; shift; git \"$@\"; }; f"
   ds = diff --stat
   diffstat = diff --stat
   f = "!f(){ git fetch --all --tags; git remote prune origin; }; f"
