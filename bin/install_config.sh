@@ -37,7 +37,7 @@ function git_clone() {
 check_or_install_packages \
     "git" "curl" \
     "terminator" "vim" \
-    "xclip" "wget"
+    "xclip" "wget" "binutils"
 
 git_clone "https://github.com/gerchardon/config.git" "$WHERE"
 
