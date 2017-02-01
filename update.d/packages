@@ -2,6 +2,6 @@
 
 function run() {
   debug "Update packages"
-  sudo aptitude update >/dev/null \
-      && sudo aptitude upgrade -y
+  sudo apt-get update >/dev/null \
+      && sudo apt-get upgrade -y
 }
