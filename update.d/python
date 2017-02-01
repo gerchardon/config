@@ -6,7 +6,6 @@ function run() {
     debug "Pip not found (Python [disabled])"
     return 0
   }
-  [ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --user --install-option="--user" virtualenvwrapper
-  [ ! -f ~/.local/bin/http ] && pip install --user --install-option="--user" httpie
-  [ ! -f ~/.local/bin/gitcheck ] && pip install --user --install-option="--user" git+git://github.com/badele/gitcheck.git && pip install --user --install-option="--user" colored
+  [ ! -f ~/.local/bin/virtualenvwrapper.sh ] && pip install --user --install-option="--user" virtualenvwrapper || true
+  [ ! -f ~/.local/bin/gitcheck ] && pip install --user --install-option="--user" git+git://github.com/badele/gitcheck.git && pip install --user --install-option="--user" colored || true
 }
