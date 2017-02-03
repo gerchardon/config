@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##
 ## Shell script to configure env
@@ -6,7 +6,6 @@
 ##  * Run install/update scripts
 
 WHERE=${WHERE-$HOME/projects/config}
-
 
 ## FUNCTION UTIL
 
@@ -24,7 +23,7 @@ function check_or_install_packages() {
 function git_clone() {
     repo=$1
     dir=$2
-    [ ! -d "$dir"] && {
+    [[ ! -d "$dir" ]] && {
         mkdir -p "$dir/.."
         git clone --recursive $repo $dir
     } || {
@@ -41,4 +40,4 @@ check_or_install_packages \
 
 git_clone "https://github.com/gerchardon/config.git" "$WHERE"
 
-$WERE/bin/update_config
+$WHERE/bin/update_config
