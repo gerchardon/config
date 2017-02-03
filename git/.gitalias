@@ -47,5 +47,7 @@
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
   contributors = shortlog --summary --numbered
 
+  up = pull --rebase --autostash
+
 [include]
   path = .giturl
