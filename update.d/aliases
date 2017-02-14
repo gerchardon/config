@@ -8,5 +8,6 @@ function run() {
     ln -sf $WHERE/terminator $HOME/.config/
     ln -sf $WHERE/git/.gitalias $HOME/
     ln -sf $WHERE/git/.giturl $HOME/
+    ln -sf $WHERE/.git-prompt-colors.sh $HOME/.git-prompt-colors.sh
     git config --global --replace-all include.path "~/.gitalias" "~/.gitalias"
 }
