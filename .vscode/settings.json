@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "**/.alias.d/*": "shellscript",
+        "**/update.d/*": "shellscript"
+    }
+}
