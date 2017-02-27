@@ -29,7 +29,7 @@
   cm = "!f(){ git commit -m \"$*\"; }; f"
   d = diff
   ds = diff --staged
-  dw = diff --color-words
+  ldw = diff --color-words
   l = "!f(){ git ll ${@:--10}; }; f"
   la = "!f(){ git ll --all ${@:--10}; }; f"
   ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
@@ -48,6 +48,10 @@
   contributors = shortlog --summary --numbered
 
   up = pull --rebase --autostash
+
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep "^S"
 
 [include]
   path = .giturl
