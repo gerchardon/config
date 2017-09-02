@@ -1,0 +1,17 @@
+# -*-Shell-script-*-
+
+function run() {
+  command -v git >/dev/null 2>&1 || {
+    debug "Git not found"
+    return 0
+  }
+
+  git config -l | grep "user.name" >/dev/null || {
+    read -p "Git name: " GIT_USER_NAME
+    git config --global user.name "$GIT_USER_NAME"
+  }
+  git config -l | grep "user.email" >/dev/null || {
+    read -p "Git email: " GIT_EMAIL
+    git config --global user.email "$GIT_EMAIL"
+  }
+}
