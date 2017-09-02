@@ -4,7 +4,7 @@ function run() {
     if [ ! -r /usr/local/bin/whalebrew ]; then
         debug "install whalebrew"
         sudo chmod o+w /usr/local/bin/
-        url="https://github.com/bfirsh/whalebrew/releases/download/0.0.3/whalebrew-$(uname -s)-$(uname -m)"
+        url="https://github.com/bfirsh/whalebrew/releases/download/0.1.0/whalebrew-$(uname -s)-$(uname -m)"
         curl -L "$url" -o /usr/local/bin/whalebrew
         chmod +x /usr/local/bin/whalebrew
     fi
