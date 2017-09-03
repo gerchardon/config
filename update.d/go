@@ -1,0 +1,11 @@
+# -*-Shell-script-*-
+
+function run() {
+  command -v go >/dev/null 2>&1 || {
+    debug "Install golang"
+    wget -q -O /tmp/go.tar.gz https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
+    tar -C /tmp -xzf /tmp/go.tar.gz
+    rm -f /tmp/go.tar.gz
+    sudo mv /tmp/go /usr/local/go
+  }
+}
