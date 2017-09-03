@@ -20,7 +20,7 @@ function run() {
     fi
     set +eu
     source $HOME/.nvm/nvm.sh
-    nvm_install v5
-    nvm alias default v5 >/dev/null
+    nvm_install v6
+    nvm alias default stable >/dev/null
     set -eu
 }
