@@ -1,12 +1,12 @@
 alias d="docker"
-
+alias dcp="docker-compose"
 
 [ -f /usr/share/bash-completion/completions/docker ] && source /usr/share/bash-completion/completions/docker
 complete -o bashdefault -o default -o nospace -F _docker d
 
+[ -f /etc/bash_completion.d/docker-compose ] && source /etc/bash_completion.d/docker-compose
+complete -o bashdefault -o default -o nospace -F _docker_compose dcp
+
 # Docker cleanup
 alias docker-clean='docker rm -f $(docker ps -aq)'
 alias docker-iclean='docker rmi $(docker images -q -f dangling=true)'
-
-# Docker client
-alias redis-cli="docker run --rm -ti redis:alpine redis-cli"
