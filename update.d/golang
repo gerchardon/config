@@ -1,0 +1,10 @@
+# -*-Shell-script-*-
+
+function run() {
+    debug "update golang"
+    command -v go >/dev/null 2>&1 || {
+        debug "Golang not found (golang [disabled])"
+        return 0
+    }
+    # TODO: Install with go get ...
+}
