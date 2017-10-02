@@ -4,6 +4,10 @@ alias dcp="docker-compose"
 [ -f /usr/share/bash-completion/completions/docker ] && source /usr/share/bash-completion/completions/docker
 complete -o bashdefault -o default -o nospace -F _docker d
 
+# Docker machine completion
+[ -f /etc/bash_completion.d/docker-machine.bash ] && source /etc/bash_completion.d/docker-machine.bash
+
+# Docker compose completion
 [ -f /etc/bash_completion.d/docker-compose ] && source /etc/bash_completion.d/docker-compose
 complete -o bashdefault -o default -o nospace -F _docker_compose dcp
 
