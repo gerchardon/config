@@ -1,2 +1,14 @@
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/GoCode"
+export PATH="$PATH:$GOPATH/bin"
+
+command -v reflex >/dev/null 2>&1 && {
+
+    goreload() {
+        #local go_files
+        #go_files=$(find . -iname '*.go')
+        #echo $go_files
+        #reflex -r '\.go$' -s -d fancy -- sh -c "go build -v ./... && ./$(basename $(pwd))"
+        reflex -R "$(basename $(pwd))" -s -d fancy -- sh -c "go build -v ./... && ./$(basename $(pwd))"
+    }
+}
