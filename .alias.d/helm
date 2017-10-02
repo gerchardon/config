@@ -1,0 +1,6 @@
+# -*-Shell-script-*-
+
+command -v helm >/dev/null 2>&1 && {
+  source <(helm completion bash)
+}
+
