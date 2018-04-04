@@ -1,1 +1,2 @@
 export PATH="$PATH:~/bin:~/.local/bin"
+export PATH="$PATH:~/TOOLS/JAVA/groovy/bin/"
