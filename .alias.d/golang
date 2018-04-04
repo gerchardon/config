@@ -1,6 +1,7 @@
 export PATH="$PATH:/usr/local/go/bin"
-export GOPATH="$HOME/GoCode"
-export PATH="$PATH:$GOPATH/bin"
+export GOROOT="$HOME/TOOLS/SDK/go"
+export GOPATH="$HOME/GoCode:$GOROOT"
+export PATH="$PATH:$GOROOT/bin"
 
 command -v reflex >/dev/null 2>&1 && {
 
