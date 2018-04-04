@@ -1,20 +1,21 @@
 # -*-Shell-script-*-
 
 function run() {
-  debug "update visual studio code"
+  debug "update visual studio code-insiders"
   command -v code >/dev/null 2>&1 || {
-    info "Install visual studio code"
+    info "Install visual studio code-insiders"
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
     sudo mv /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
     sudo apt-get update
-    sudo apt-get install -y code # or code-insiders
+    sudo apt-get install -y code-insiders # or code
   }
+  # Install extensions
+  code --install-extension PeterJausovec.vscode-docker
+  code --install-extension robertohuertasm.vscode-icons
+  code --install-extension alefragnani.project-manager
+  code --install-extension lukehoban.go
+  code --install-extension eamodio.gitlens
   # Bug on visual studio don't work
-  #code --install-extension robertohuertasm.vscode-icons
-  #code --install-extension lukehoban.Go
-  #code --install-extension Borke.puppet
-  #code --install-extension PeterJausovec.vscode-docker
-  #code --install-extension alefragnani.project-manager
   #code --install-extension ipedrazas.kubernetes-snippets
 }
